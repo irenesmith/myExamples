@@ -1,0 +1,133 @@
+:root {
+  --color-background: #fff;
+  --color-text: #333;
+  --color-highlight: #077;
+  --color-background-active: darkblue;
+  --color-active: white;
+  
+  --max-width: 1024px;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--color-highlight);
+  color: var(--color-text);
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background-color: var(--color-background);
+  margin: 0 auto;
+  max-width: var(--max-width);
+  padding: 1em;
+  width: 80%;
+}
+
+h1, h2 {
+  color: var(--color-highlight);
+}
+
+h1 {
+  letter-spacing: 1px;
+  text-align: center;
+  word-spacing: 2px;
+}
+
+footer {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.game-board {
+  border: 1px solid var(--color-text);
+  border-collapse: collapse;
+  display: table;
+  margin: 1rem 5rem;
+  width: 50%;
+}
+
+thead td {
+  border: 1px solid var(--color-text);
+  padding: 0.3rem;
+  text-align: center;
+}
+
+tbody td {
+  border: 1px solid var(--color-text);
+  padding: 0.3rem;
+  text-align: right;
+}
+
+th {
+  border: 1px solid var(--color-text);
+  padding: 0.3rem;
+  text-align: right;
+  width: 40%;
+}
+
+.player-list {
+  border: 1px solid var(--color-text);
+  border-collapse: collapse;
+  display: table;
+  margin: 1rem 5rem;
+  width: 25%;
+}
+
+.player-list th {
+  font-weight: bold;
+  width: 30%;
+}
+
+.player-list td {
+  width: 20%;
+}
+
+#game {
+  display: flex;
+}
+
+.active {
+  background-color: var(--color-background-active);
+  color: var(--color-active);
+}
+
+.center-button {
+  border: 1px solid var(--color-text);
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  height: 2rem;
+  width: 7rem;
+}
+
+.dice-cup {
+  display: flex;
+  align-content: space-around;
+}
+
+.keep {
+  border: 3px solid var(--color-highlight);
+}
+
+@media screen and (max-width: 700px) {
+  .player-list, .game-board {
+    margin: 1rem 2rem;
+  }
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Yacht Game</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Yacht Game</h1>
+      <button class="center-button" id="roll-button">Start Game</button>
+      <div id="dice-cup">
+        <img src="img/1.png" id="0">
+        <img src="img/2.png" id="1">
+        <img src="img/3.png" id="2">
+        <img src="img/4.png" id="3">
+        <img src="img/5.png" id="4">
+        Rolls: <span id="rolls">0</span>
+      </div>
+    </header>
+    <div id="game">
+      <table class="game-board">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <td id="scores1" class="active">1</td>
+            <td id="scores2">2</td>
+            <td id="scores3">3</td>
+            <td id="scores4">4</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="s1">
+            <th>Ones</th>
+            <td id='p1-1'></td>
+            <td id='p2-1'></td>
+            <td id='p3-1'></td>
+            <td id='p4-1'></td>
+          </tr>
+          <tr id="s2">
+            <th>Twos</th>
+            <td id='p1-2'></td>
+            <td id='p2-2'></td>
+            <td id='p3-2'></td>
+            <td id='p4-2'></td>
+          </tr>
+          <tr id="s3">
+            <th>Threes</th>
+            <td id='p1-3'></td>
+            <td id='p2-3'></td>
+            <td id='p3-3'></td>
+            <td id='p4-3'></td>
+          </tr>
+          <tr id="s4">
+            <th>Fours</th>
+            <td id='p1-4'></td>
+            <td id='p2-4'></td>
+            <td id='p3-4'></td>
+            <td id='p4-4'></td>
+          </tr>
+          <tr id="s5">
+            <th>Fives</th>
+            <td id='p1-5'></td>
+            <td id='p2-5'></td>
+            <td id='p3-5'></td>
+            <td id='p4-5'></td>
+          </tr>
+          <tr id="s6">
+            <th>Sixes</th>
+            <td id='p1-6'></td>
+            <td id='p2-6'></td>
+            <td id='p3-6'></td>
+            <td id='p4-6'></td>
+          </tr>
+          <tr>
+            <th>Top Subtotal</th>
+            <td id='p1-sub-total'></td>
+            <td id='p2-sub-total'></td>
+            <td id='p3-sub-total'></td>
+            <td id='p4-sub-total'></td>
+          </tr>
+          <tr>
+            <th>Bonus</th>
+            <td id='p1-bonus'></td>
+            <td id='p2-bonus'></td>
+            <td id='p3-bonus'></td>
+            <td id='p4-bonus'></td>
+          </tr>
+          <tr>
+            <th>Top Total</th>
+            <td id='p1-top-total'></td>
+            <td id='p2-top-total'></td>
+            <td id='p3-top-total'></td>
+            <td id='p4-top-total'></td>
+          </tr>
+          <tr>
+            <td colspan="5">&nbsp;</td>
+          </tr>
+          <tr id="3kind" onclick=score3kind(e)>
+            <th>3 of a Kind</th>
+            <td id='p1-3kind'></td>
+            <td id='p2-3kind'></td>
+            <td id='p3-3kind'></td>
+            <td id='p4-3kind'></td>
+          </tr>
+          <tr id="4kind" onclick=score4kind(e)>
+            <th>4 of a Kind</th>
+            <td id='p1-4kind'></td>
+            <td id='p2-4kind'></td>
+            <td id='p3-4kind'></td>
+            <td id='p4-4kind'></td>
+          </tr>
+          <tr id="full-house">
+            <th>Full House</th>
+            <td id="p1-full-house"></td>
+            <td id="p2-full-house"></td>
+            <td id="p3-full-house"></td>
+            <td id="p4-full-house"></td>
+          </tr>
+          <tr id=sstraight>
+            <th>Small Straight</th>
+            <td id='p1-sstraight'></td>
+            <td id='p2-sstraight'></td>
+            <td id='p3-sstraight'></td>
+            <td id='p4-sstraight'></td>
+          </tr>
+          <tr id="lstraight">
+            <th>Large Straight</th>
+            <td id='p1-lstraight'></td>
+            <td id='p2-lstraight'></td>
+            <td id='p3-lstraight'></td>
+            <td id='p4-lstraight'></td>
+          </tr>
+          <tr id="yacht">
+            <th>Yacht</th>
+            <td id='p1-yacht'></td>
+            <td id='p2-yacht'></td>
+            <td id='p3-yacht'></td>
+            <td id='p4-yacht'></td>
+          </tr>
+          <tr id="chance">
+            <th>Chance</th>
+            <td id='p1-chance'></td>
+            <td id='p2-chance'></td>
+            <td id='p3-chance'></td>
+            <td id='p4-chance'></td>
+          </tr>
+          <tr>
+            <th>Bottom Subtotal</th>
+            <td id="p1-bottom-total"></td>
+            <td id="p2-bottom-total"></td>
+            <td id="p3-bottom-total"></td>
+            <td id="p4-bottom-total"></td>
+          </tr>
+          <tr>
+            <th>Grand Total</th>
+            <td id='p1-grand-total'></td>
+            <td id='p2-grand-total'></td>
+            <td id='p3-grand-total'></td>
+            <td id='p4-grand-total'></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="player-list">
+        <tbody>
+          <tr>
+            <td class="active" id="player1">Player 1</td>
+            <td id="p1Total"></td>
+          </tr>
+          <tr>
+            <td id="player2">Player 2</td>
+            <td id="p2Total"></td>
+          </tr>
+          <tr>
+            <td id="player3">Player 3</td>
+            <td id="p3Total"></td>
+          </tr>
+          <tr>
+            <td id="player4">Player 4</td>
+            <td id="p4Total"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>Copyright &copy; 2019, Irene Smith. All rights reserved.</footer>
+  </main>
+
+  <!-- End of content -->
+  <script src="js/yacht.js"></script>
+</body>
+</html>
