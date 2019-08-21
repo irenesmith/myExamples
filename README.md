@@ -1,1 +1,2 @@
-# Git repository for examples created by me for MDN
+# JavaScript examples for [Playing with Web Design](playingwithwebdesign.com)
+
