@@ -1,2 +1,2 @@
-# JavaScript examples for [Playing with Web Design](playingwithwebdesign.com)
+# JavaScript examples for [Playing with Web Design](https://playingwithwebdesign.com)
 
