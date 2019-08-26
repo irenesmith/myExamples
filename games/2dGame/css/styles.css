@@ -1,0 +1,9 @@
+#asteroids {
+  border: 1px solid black;
+  background-color: #111;
+}
+
+a:hover,
+a:focus {
+  filter: brightness(50%)
+}
