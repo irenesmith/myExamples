@@ -13,6 +13,7 @@ html {
   padding: 0;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -29,6 +30,13 @@ body {
 header {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.rolls {
+  text-align:center;
+  vertical-align: middle;
+  align-self: center;
 }
 
 main {
@@ -65,19 +73,20 @@ footer {
 
 thead td {
   border: 1px solid var(--color-text);
-  padding: 0.3rem;
+  padding: 0.2rem;
   text-align: center;
 }
 
-tbody td {
+.score {
   border: 1px solid var(--color-text);
-  padding: 0.3rem;
+  padding: 0.2rem;
   text-align: right;
+  width: 3rem;
 }
 
 th {
   border: 1px solid var(--color-text);
-  padding: 0.3rem;
+  padding: 0.2rem;
   text-align: right;
   width: 40%;
 }
@@ -112,18 +121,48 @@ th {
   border: 1px solid var(--color-text);
   border-radius: 5px;
   display: block;
-  margin: 0 auto;
+  margin: 0.5rem auto;
   height: 2rem;
   width: 7rem;
 }
 
-.dice-cup {
+#dice-cup {
+  align-self: center;
   display: flex;
-  align-content: space-around;
+  justify-content: space-around;
+  justify-self: center;
+  width: 50%;
+}
+
+.die {
+  border: 3px solid transparent;
+  height: 4rem;
+  margin: 0.5rem;
+  width: 4rem;
 }
 
 .keep {
   border: 3px solid var(--color-highlight);
+  height: 4rem;
+  margin: 0.5rem;
+  width: 4rem;
+}
+
+#splash {
+  height: auto;
+  left:25vw;
+  position: absolute;
+  top: 5vh;
+  width: 50vw;
+  z-index: 999;
+}
+
+.splash-on {
+  display: block;
+}
+
+.splash-off {
+  display: none;
 }
 
 @media screen and (max-width: 700px) {

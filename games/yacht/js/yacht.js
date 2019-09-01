@@ -1,6 +1,5 @@
 // Global constants
 const NUM_DICE = 5;
-const NUM_SIDES = 6;
 const MAX_MOVES = 13;
 const rollButton = document.getElementById('roll-button');
 const errScoreOnce = 'You can only enter a score in this box once.';
@@ -12,16 +11,20 @@ var isPlaying = false;
 var currentPlayer = 1;
 var playerMoves = [0, 0, 0, 0];
 var rollCount = 0;
+var numPlayers = 4;
 
-const dice = [];
+var dice = [];
 
 window.onload = (e) => {
+  // First initialize the dice
+  dice = initDice(NUM_DICE);
+
   // Add listeners to the dice
   for(let i = 0; i < NUM_DICE; i++) {
     document.getElementById(i).addEventListener('click', e => {
       if (dice[e.target.id].keep) {
         dice[e.target.id].keep = false;
-        e.target.setAttribute('class', '');
+        e.target.setAttribute('class', 'die');
       } else {
         dice[e.target.id].keep = true;
         e.target.setAttribute('class', 'keep');
@@ -29,65 +32,80 @@ window.onload = (e) => {
     });
   }
 
-  for(let i = 1; i <= 6; i++) {
-    document.getElementById('s' + i).addEventListener('click', score);
-  }
-  document.getElementById('3kind').addEventListener('click', score);
-  document.getElementById('4kind').addEventListener('click', score);
-  document.getElementById('sstraight').addEventListener('click', score);
-  document.getElementById('lstraight').addEventListener('click', score);
-  document.getElementById('full-house').addEventListener('click', score);
-  document.getElementById('yacht').addEventListener('click', score);
-  document.getElementById('chance').addEventListener('click', score);  
+  // Add a listener for the splash screen
+  let splash = document.getElementById('splash');
+  splash.addEventListener('click', () => {
+    splash.className = 'splash-off';
+  });
 
-  rollButton.addEventListener('click', function(e) {
+  initScoreCard();
+
+};
+
+function initScoreCard() {
+  // Attach listeners for the score card
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById('s' + i).addEventListener('click', scoreClick);
+  }
+  document.getElementById('3kind').addEventListener('click', scoreClick);
+  document.getElementById('4kind').addEventListener('click', scoreClick);
+  document.getElementById('sstraight').addEventListener('click', scoreClick);
+  document.getElementById('lstraight').addEventListener('click', scoreClick);
+  document.getElementById('full-house').addEventListener('click', scoreClick);
+  document.getElementById('yacht').addEventListener('click', scoreClick);
+  document.getElementById('chance').addEventListener('click', scoreClick);
+
+  rollButton.addEventListener('click', function (e) {
     if (!isPlaying) {
       initGame();
     } else {
-      rollDice();
+      rollClick();
     }
   });
-};
+}
 
+// Start a new game
 function initGame() {
   isPlaying = true;
   rollButton.textContent = "Roll";
   currentPlayer = 1;
-  initDice();
+  numPlayers = document.getElementById('num-players').value;
   clearScoreCard();
 }
 
-function initDice() {
-  for(let i = 0; i < NUM_DICE; i++) {
-    dice[i] = { id: i, keep: false, value: i + 1 };
+// Empty all slots in the score card
+function clearScoreCard() {
+  let cells = document.getElementsByClassName('score');
+  for(let i = 0; i < cells.length; i++) {
+    cells[i].textContent = '';
   }
 }
 
-function clearScoreCard() {
+// ------------------------------------------
+//   Game play routines
+// ------------------------------------------
 
-}
-
-function rollDice() {
+// Roll the dice up to three times in each turn
+// making sure to only roll the dice that havent
+// been selected to hold.
+function rollClick() {
   if(rollCount >= 3) {
     alert(errMustScore);
     return;
   }
 
+  rollDice('img/', NUM_DICE, dice);
   rollCount++;
+
   document.getElementById('rolls').textContent = rollCount;
 
-  // roll the dice
-  for(let i = 0; i < NUM_DICE; i++) {
-    if(!dice[i].keep) {
-      let dieVal = Math.floor(Math.random() * NUM_SIDES + 1);
-      dice[i].value = dieVal;
-      dice[i].keep = false;
-      document.getElementById(dice[i].id).setAttribute('src', 'img/' + dieVal + '.png');
-    }
-  }
 }
 
-function score(e) {
+// This function handles the click event for each of
+// the score card positions. It also bubbles up to
+// the row in the score card of which the clicked
+// element is a member.
+function scoreClick(e) {
   // Just in case the player tries to score on
   // the previous player's dice.
   if(rollCount < 1) {
@@ -152,7 +170,13 @@ function score(e) {
     sumGrandTotal();
     playerMoves[currentPlayer] += 1;
 
+    // Now that we're done with the scoring part
+    // get ready for the next player.
     nextPlayer();
+
+    // At the beginning of the turn, none of the
+    // dice should be held, so set keep to false
+    // for all five dice.
     clearHold();
   } else {
     alert(errScoreOnce);
@@ -286,7 +310,8 @@ function scoreSStraight() {
   let middle = true;
   let upper = true;
 
-  // check lower then middle then upper
+  // check lower then middle then upper to see
+  // if the appropriate values are at least one.
   for (let i = 1; i <= 4; i++) if (dice[i] == 0) lower = false;
   for (let i = 2; i <= 5; i++) if (dice[i] == 0) middle = false;
   for (let i = 3; i <= 6; i++) if (dice[i] == 0) upper = false;
@@ -299,7 +324,7 @@ function scoreLStraight() {
   let lower = true;
   let upper = true;
 
-  // Assure all are ones for lower or upper
+  // Assure all dice counts are ones for lower or upper
   for (let i = 1; i <= 5; i++) if (dice[i] == 0) lower = false;
 
   for (let i = 2; i <= 6; i++) if (dice[i] == 0) upper = false;
@@ -315,6 +340,8 @@ function scoreChance() {
   return sum;
 }
 
+// Clear the highlight for the current player and
+// then highlight the new player.
 function nextPlayer() {
   // Clear the "active" class from the current user.
   document.getElementById('player' + currentPlayer).className = '';
@@ -322,7 +349,7 @@ function nextPlayer() {
 
   // Now increment the current player.
   currentPlayer++;
-  if(currentPlayer > 4) currentPlayer = 1;
+  if(currentPlayer > numPlayers) currentPlayer = 1;
 
   // Now highlight the new player
   document.getElementById('player' + currentPlayer).className = 'active';
@@ -334,9 +361,12 @@ function nextPlayer() {
   document.getElementById('rolls').textContent = rollCount;
 }
 
+// At the beginning of the turn, none of the
+// dice should be held, so set keep to false
+// for all five dice.
 function clearHold() {
   for(let i = 0; i < NUM_DICE; i++) {
     dice[i].keep = false;
-    document.getElementById(i).className = '';
+    document.getElementById(i).className = 'die';
   }
 }
