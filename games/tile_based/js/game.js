@@ -85,9 +85,6 @@ window.onload = (e) => {
   requestAnimationFrame(drawGame);
   ctx.font = 'bold 10pt sans-serif';
 
-  ctx.fillStyle = "#000000";
-  ctx.fillRect(0, 0, viewport.screen[0], viewport.screen[1]);
-
   window.addEventListener('keydown', (e) => {
     // keyCode has been deprecated using key instead.
     if(e.key.startsWith('Arrow')) {
@@ -160,7 +157,7 @@ function drawGame() {
 
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, viewport.screen[0], viewport.screen[1]);
-  
+
   for(let row = viewport.startTile[1]; row < viewport.endTile[1]; row++) {
     for(let col = viewport.startTile[0]; col < viewport.endTile[0]; col++) {
       switch(gameMap[((row * mapW) + col)]) {
