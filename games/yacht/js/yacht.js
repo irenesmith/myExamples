@@ -32,6 +32,12 @@ window.onload = (e) => {
     });
   }
 
+  // Add a listener for the splash screen
+  let splash = document.getElementById('splash');
+  splash.addEventListener('click', () => {
+    splash.className = 'splash-off';
+  });
+
   initScoreCard();
 
 };
