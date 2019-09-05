@@ -36,6 +36,18 @@ window.onload = (e) => {
   let splash = document.getElementById('splash');
   splash.addEventListener('click', () => {
     splash.className = 'splash-off';
+    document.getElementById('userInfo').setAttribute('open', '');
+  });
+
+  // Add a listener for the user dialog
+  document.getElementById('btnOk').addEventListener('click', e => {
+    let playerForm = document.getElementById('userInfo');
+    numPlayers = parseInt(document.getElementById('num-players').value);
+    for(let i = 1; i <= numPlayers; i++) {
+      let name = document.getElementById('p' + i.toString()).value;
+      document.getElementById('player' + i.toString()).textContent = name;
+    }
+    document.getElementById('userInfo').removeAttribute('open');
   });
 
   initScoreCard();
@@ -67,9 +79,7 @@ function initScoreCard() {
 // Start a new game
 function initGame() {
   isPlaying = true;
-  rollButton.textContent = "Roll";
   currentPlayer = 1;
-  numPlayers = document.getElementById('num-players').value;
   clearScoreCard();
 }
 
@@ -115,7 +125,7 @@ function scoreClick(e) {
 
   let scoreVal = 0;
 
-  // Pull of the part of the element name that
+  // Pull off the part of the element name that
   // tells us what the player is trying to score
   let scoreStr = (e.target.id).substring(0,1) != 'p' ?
     e.target.id : (e.target.id).substring(3);
@@ -180,6 +190,27 @@ function scoreClick(e) {
     clearHold();
   } else {
     alert(errScoreOnce);
+  }
+
+  // If the board is filled, the game is over.
+  let moves = 0;
+  for (let i = 1; i <= numPlayers; i++) {
+    moves += playerMoves[i];
+  }
+
+  if (moves >= (MAX_MOVES * numPlayers)) {
+    isPlaying = false;
+    let highScore = 0;
+    let winner = '';
+    for (let i = 1; i <= numPlayers; i++) {
+      if (parseInt(document.getElementById('p' + i.toString() + 'Total').value) > highScore) {
+          highScore = parseInt(document.getElementById('p' + i.toString() + 'Total').value);
+          winner = document.getElementById('player' + i.toString());
+        }
+      }
+
+    alert(`${winner} wins with a score of ${highScore}!`);
+    document.getElementById('userInfo').setAttribute('open', '');
   }
 }
 
@@ -320,14 +351,13 @@ function scoreSStraight() {
 }
 
 function scoreLStraight() {
-  let diceCount = [];
+  let diceCount = countDice();
   let lower = true;
   let upper = true;
 
   // Assure all dice counts are ones for lower or upper
-  for (let i = 1; i <= 5; i++) if (dice[i] == 0) lower = false;
-
-  for (let i = 2; i <= 6; i++) if (dice[i] == 0) upper = false;
+  for (let i = 1; i <= 5; i++) if (diceCount[i] == 0) lower = false;
+  for (let i = 2; i <= 6; i++) if (diceCount[i] == 0) upper = false;
 
   return lower || upper ? 40 : 0;
 }
