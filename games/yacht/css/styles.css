@@ -165,6 +165,29 @@ th {
   display: none;
 }
 
+#userInfo {
+  margin: 1em auto;
+  padding: 1em;
+}
+
+#userInfo input {
+  margin: 0.5rem;
+  padding: 3px;
+}
+
+#userInfo input[type='number'] {
+  text-align: right;
+  width: 3rem;
+}
+
+#userInfo button {
+  border: 1px solid #333;
+  display: block;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
 @media screen and (max-width: 700px) {
   .player-list, .game-board {
     margin: 1rem 2rem;

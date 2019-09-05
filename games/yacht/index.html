@@ -10,6 +10,19 @@
 </head>
 <body>
   <img id="splash" class="splash-on" src="img/yacht_splash.jpg" alt="splash screen">
+  <dialog id='userInfo'>
+      <label for='num-players'>Number of Players: </label>
+      <input type="number" min="1" max="4" id='num-players' value="1"><br>
+      <label for='p1'>Player 1</label>
+      <input type="text" name="player1" id="p1"><br>
+      <label for='p2'>Player 2</label>
+      <input type="text" name="player2" id="p2"><br>
+      <label for='p3'>Player 3</label>
+      <input type="text" name="player3" id="p3"><br>
+      <label for='p4'>Player 1</label>
+      <input type="text" name="player4" id="p4"><br>
+      <button id="btnOk">OK</button>
+  </dialog>
   <main>
     <header>
       <h1>Yacht Game</h1>
@@ -21,7 +34,7 @@
         <img src="img/4.png" class="die" id="3">
         <img src="img/5.png" class="die" id="4">
       </div>
-      <button class="center-button" id="roll-button">Start Game</button>
+      <button class="center-button" id="roll-button">Roll</button>
     </header>
     <div id="game">
       <table class="game-board">
@@ -167,19 +180,6 @@
         </tbody>
       </table>
       <table class="player-list">
-        <thead>
-          <tr>
-            <th colspan=2>
-              Players:&nbsp;
-              <select name="num-players" id="num-players">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4" selected>4</option>
-              </select>
-            </th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <th class="active" id="player1">Player 1</th>
