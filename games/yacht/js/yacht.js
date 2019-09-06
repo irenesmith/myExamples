@@ -2,9 +2,12 @@
 const NUM_DICE = 5;
 const MAX_MOVES = 13;
 const rollButton = document.getElementById('roll-button');
-const errScoreOnce = 'You can only enter a score in this box once.';
-const errMustScore = 'You must select a box to post your score.';
-const errRollFirst = 'You must roll the dice before you can post a score.';
+const ERR_SCORE_ONCE = 'You can only enter a score in this box once.';
+const ERR_MUST_SCORE = 'You must select a box to post your score.';
+const ERR_ROLL_FIRST = 'You must roll the dice before you can post a score.';
+const PLEASE_ROLL = 'Please roll the dice.';
+const ROLL_AGAIN = 'Please roll again or select the item you wish to score.';
+const SELECT_SCORE = 'Please select the item you wish to score.';
 
 // Global variables
 var isPlaying = false;
@@ -48,10 +51,10 @@ window.onload = (e) => {
       document.getElementById('player' + i.toString()).textContent = name;
     }
     document.getElementById('userInfo').removeAttribute('open');
+  initGame();
   });
 
   initScoreCard();
-
 };
 
 function initScoreCard() {
@@ -68,11 +71,7 @@ function initScoreCard() {
   document.getElementById('chance').addEventListener('click', scoreClick);
 
   rollButton.addEventListener('click', function (e) {
-    if (!isPlaying) {
-      initGame();
-    } else {
       rollClick();
-    }
   });
 }
 
@@ -80,7 +79,9 @@ function initScoreCard() {
 function initGame() {
   isPlaying = true;
   currentPlayer = 1;
+  playerMoves = [0,0,0,0];
   clearScoreCard();
+  document.getElementById('rolls').textContent = PLEASE_ROLL;
 }
 
 // Empty all slots in the score card
@@ -100,14 +101,14 @@ function clearScoreCard() {
 // been selected to hold.
 function rollClick() {
   if(rollCount >= 3) {
-    alert(errMustScore);
+    alert(ERR_MUST_SCORE);
     return;
   }
 
   rollDice('img/', NUM_DICE, dice);
   rollCount++;
 
-  document.getElementById('rolls').textContent = rollCount;
+  rollCount === 3 ? document.getElementById('rolls').textContent = SELECT_SCORE : document.getElementById('rolls').textContent = ROLL_AGAIN;
 
 }
 
@@ -119,7 +120,7 @@ function scoreClick(e) {
   // Just in case the player tries to score on
   // the previous player's dice.
   if(rollCount < 1) {
-    alert(errRollFirst);
+    alert(ERR_ROLL_FIRST);
     return;
   }
 
@@ -189,7 +190,7 @@ function scoreClick(e) {
     // for all five dice.
     clearHold();
   } else {
-    alert(errScoreOnce);
+    alert(ERR_SCORE_ONCE);
   }
 
   // If the board is filled, the game is over.
@@ -203,9 +204,10 @@ function scoreClick(e) {
     let highScore = 0;
     let winner = '';
     for (let i = 1; i <= numPlayers; i++) {
-      if (parseInt(document.getElementById('p' + i.toString() + 'Total').value) > highScore) {
-          highScore = parseInt(document.getElementById('p' + i.toString() + 'Total').value);
-          winner = document.getElementById('player' + i.toString());
+      let testValue = parseInt(document.getElementById('p' + i.toString() + 'Total').textContent);
+      if (testValue > highScore) {
+          highScore = testValue;
+          winner = document.getElementById('player' + i.toString()).textContent;
         }
       }
 
@@ -343,9 +345,10 @@ function scoreSStraight() {
 
   // check lower then middle then upper to see
   // if the appropriate values are at least one.
-  for (let i = 1; i <= 4; i++) if (dice[i] == 0) lower = false;
-  for (let i = 2; i <= 5; i++) if (dice[i] == 0) middle = false;
-  for (let i = 3; i <= 6; i++) if (dice[i] == 0) upper = false;
+  // i - 1 because the array is, of course, zero-based.
+  for (let i = 1; i <= 4; i++) if (dice[i - 1] == 0) lower = false;
+  for (let i = 2; i <= 5; i++) if (dice[i - 1] == 0) middle = false;
+  for (let i = 3; i <= 6; i++) if (dice[i - 1] == 0) upper = false;
 
   return upper || middle || lower ? 30 : 0;
 }
@@ -356,8 +359,9 @@ function scoreLStraight() {
   let upper = true;
 
   // Assure all dice counts are ones for lower or upper
-  for (let i = 1; i <= 5; i++) if (diceCount[i] == 0) lower = false;
-  for (let i = 2; i <= 6; i++) if (diceCount[i] == 0) upper = false;
+  // i - 1 because the array is, of course, zero-based.
+  for (let i = 1; i <= 5; i++) if (diceCount[i - 1] == 0) lower = false;
+  for (let i = 2; i <= 6; i++) if (diceCount[i - 1] == 0) upper = false;
 
   return lower || upper ? 40 : 0;
 }
@@ -388,7 +392,7 @@ function nextPlayer() {
   // Finally, if it's next player, the rollCount needs
   // to be reset so the person has three rolls too.
   rollCount = 0;
-  document.getElementById('rolls').textContent = rollCount;
+  document.getElementById('rolls').textContent = PLEASE_ROLL;
 }
 
 // At the beginning of the turn, none of the
