@@ -1,0 +1,162 @@
+﻿*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:1.6rem;
+    background: url('../images/tipster_3.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#outer {
+    width:50rem;
+    margin:5%;
+    background-color:darkgreen;
+    border-radius:25px;
+    border:1px solid darkgoldenrod;
+}
+
+#inner {
+    margin:25px;
+    padding: 15px;
+    background-color:palegoldenrod;
+    border-radius:25px;
+    border:1px solid firebrick;
+}
+
+#tip-form {
+    display:flex;
+    flex-direction: column;
+}
+
+.row {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.col-left {
+    flex-direction:column;
+    flex:1 1 0;
+}
+
+.col-right {
+    flex-direction:column;
+    flex:1 1 0;
+    align-items:stretch;
+}
+
+input {
+    margin-bottom:1rem;
+    padding:0.5rem;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:1.6rem;
+    text-align:right;
+    border:none;
+    border-radius:0.5rem;
+}
+
+label {
+    display:block;
+    padding:1rem 0;
+}
+
+.buttons {
+    margin-top:1rem;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width:10rem;
+    padding: 0.5rem;
+    color: #faf7ff;
+    text-transform: uppercase;
+    border-radius:10%;
+    border:none;
+}
+
+.btn:hover {
+    border:1px solid darkgoldenrod;
+    box-shadow: 0.15rem 0.15rem rgba(51,51,51,0.25);
+}
+
+.okBtn {
+    background-color: #5cb85c;
+}
+
+.cancelBtn {
+    background-color: #f0ad4e;
+}
+
+h1 {
+    text-align:center;
+    font-family: 'Fontdiner Swanky', cursive;
+}
+
+footer {
+    position:fixed;
+    width:100%;
+    bottom:5px;
+    left:15px;
+    color:white;
+    text-align:center;
+}
+
+footer a {
+    color:white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color:yellow;
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+footer a:visited {
+    color:yellow;
+}
+
+/* Media Queries */
+@media screen and (max-width: 400px) {
+  #outer {
+    width:30rem;
+    margin:0.5rem auto;
+  }
+
+  footer {
+      position:relative;
+      color:white;
+      text-align:center;
+  }
+
+  #tip-form {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+  }
+
+  input {
+    width:50%;
+  }
+  
+  footer {
+    width:100%;
+    bottom:0;
+    left:0px;
+  }
+
+}

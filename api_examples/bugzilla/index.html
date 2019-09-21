@@ -1,0 +1,35 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>API Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="getBugs.css">
+</head>
+<body>
+    <main id="bugApp">
+        <h1>Bugify App</h1>
+        <form id="bugzilla-id">
+            <fieldset>
+                <legend id="legend">Retrieve Bugzilla Bugs for</legend>
+                <label for="email">Email:</label>&nbsp;
+                <input type="email" name="email" id="email" required placeholder="you@example.com"><br>
+                <button class="blueButton" onclick="return getBugs();">Get Bugs...</button>
+            </fieldset>
+        </form>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Summary</th>
+            </thead>
+            <tbody id="bug-list">
+
+            </tbody>
+        </table>
+    </main>
+    <script src="getBugs.js"></script>    
+</body>
+</html>
