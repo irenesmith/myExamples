@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Games - Crag</title>
+  <link rel="stylesheet" href="css/crag.css">
+</head>
+<body>
+  <header>
+    <h1>CRAG</h1>
+    <h2 id="rolls"></h2>
+  </header>
+  <main>
+    <div class="score-card">
+      <table class="scores">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="column-header" id="player1">Player 1</th>
+            <th class="column-header" id="player2">Player 2</th>
+            <th class="column-header" id="player3">Player 3</th>
+            <th class="column-header" id="player4">Player 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="label-column">Ones</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Twos</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Threes</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Fours</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Fives</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Six</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Low Straight (1,2,3)</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">High Straight (4,5,6)</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Odd Straight</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Even Straight</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Three of a Kind</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Thirteen</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Crag</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+          <tr>
+            <th class="label-column">Total</th>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+            <td class="score-column"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="dice-cup">
+      <img class="die" id="0" src="../img/dice/1.png" class="die">
+      <img class="die" id="1" src="../img/dice/1.png" class="die">
+      <img class="die" id="2" src="../img/dice/1.png" class="die">
+    </div>
+    <button id="btn-roll" class="myButton">Roll</button>
+
+  </main>
+  
+  <!-- End of content -->
+  <script type="module" src="js/crag.js"></script>
+</body>
+</html>

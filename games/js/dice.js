@@ -21,12 +21,12 @@ function initDice(numDice) {
 
 function rollDice(path, numDice, dice) {
   // roll the dice but only those not marked to keep
-  for (let i = 0; i < NUM_DICE; i++) {
+  for (let i = 0; i < numDice; i++) {
     if (!dice[i].keep) {
       let dieVal = Math.floor(Math.random() * NUM_SIDES + 1);
       dice[i].value = dieVal;
       dice[i].keep = false;
-      document.getElementById(dice[i].id).setAttribute('src', 'img/' + dieVal + '.png');
+      document.getElementById(dice[i].id).setAttribute('src', path + dieVal + '.png');
     }
   }
 }

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tipster Tip Calculator</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet"> 
+    <link href="css/tipster.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="outer">
+    <div id="inner">
+      <h1>Tipster</h1>
+      <form id="tip-form">
+        <div class="row">
+          <div class="col-left">
+            <div>
+              <label for="txtNumDiners">Number of Diners: </label>
+              <input class="form-control" type="number" min="1" id="txtNumDiners" />
+            </div>
+            <div>
+              <label for="txtSubTotal">Subtotal</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" id="txtSubTotal" min="0" step=".01" />
+              </div>
+            </div>
+            <div>
+              <label for="txtTipPercent">Tip %</label>
+              <div class="input-group">
+                <input type="number" min="1" max="100" class="form-control" id="txtTipPercent">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-right">
+            <div>
+              <label for="txtTipAmount">Tip</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="text" id="txtTipAmount" readonly value="0.00" />
+              </div>
+            </div>
+            <div>
+              <label for="txtPerDiner">Each Diner Pays</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="text" id="txtPerDiner" readonly value="0.00" />
+              </div>
+            </div>
+            <div>
+              <label for="txtTotal">Total Bill</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="text" id="txtTotal" readonly value="0.00" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="buttons">
+            <button class="btn okBtn" name="cmdCalc" id="cmdCalc">Calculate</button>&nbsp;
+            <button class="btn cancelBtn" name="cmdClear" id="cmdClear">Clear</button>
+          </div>
+        </div>
+      </form>
+    </div><!-- innter -->
+  </div><!-- outer -->
+  <footer>
+    <p>Copyright &copy; 2019 Irene Smith. <a href="https://pixabay.com/photos/fine-dining-yamashiro-hollywood-701634/">Background image</a> by <a href="https://pixabay.com/users/charles90068-844062/">charles90068</a> on Pixabay.</p>
+    <p>Return to <a href="../">Home Page</a></p>
+  </footer>
+  <!-- End of content -->
+  <script src="js/tipster.js"></script>
+</body>
+</html>

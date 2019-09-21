@@ -1,0 +1,149 @@
+:root {
+  --color-background: #fff;
+  --color-text: #333;
+  --color-highlight: #077;
+  --color-background-active: darkblue;
+  --color-active: white;
+
+  --max-width: 1024px;
+}
+
+body {
+  background-color:white;
+}
+
+main {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-content:start;
+}
+
+h1 {
+  color:red;
+  -webkit-text-stroke: 2px blue;
+  text-align: center;
+}
+
+.score-card {
+  margin:2rem;
+  padding: 1.5rem;
+  width:33%;
+  background-color:white;
+  color:black;
+  border:1px solid black;
+}
+
+.scores {
+  width:100%;
+  border:1px solid black;
+  border-collapse: collapse;
+}
+
+.column-header {
+  padding:0.5rem;
+
+}
+.label-column {
+  padding:0.5rem;
+  text-align: right;
+  border:1px solid black;
+}
+
+.score-column {
+  padding:0.5rem;
+  text-align: right;
+  border:1px solid black;
+}
+
+#player1 {
+  color:red;
+}
+
+#player2 {
+  color:green;
+}
+
+#player3 {
+  color:blue;
+}
+
+#player4 {
+  color:orange;
+}
+
+.die {
+  border: 3px solid transparent;
+  height: 4rem;
+  margin: 0.5rem;
+  width: 4rem;
+}
+
+.keep {
+  border: 3px solid var(--color-highlight);
+  height: 4rem;
+  margin: 0.5rem;
+  width: 4rem;
+}
+
+#dice-cup {
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-content: space-between;
+  width:48 rem;
+  height: 8rem;
+}
+
+.myButton {
+  align-self:center;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+	background-color:#77d42a;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aade7c;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+	background-color:#5cb811;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size:1.2rem;
+  }
+  .score-card {
+    margin:0.5rem auto;
+    padding: 0.5rem;
+    width:100%;
+  }  
+
+  h1 {
+    margin:0.5rem auto;
+  }
+  
+}
+
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  .score-card {
+    margin:0.5rem auto;
+    padding: 0.5rem;
+    width:80%;
+    border:1px solid black;
+  }
+}
