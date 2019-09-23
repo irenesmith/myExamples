@@ -1,6 +1,74 @@
+body {
+  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  font-family: Arial, Helvetica,
+  sans-serif;
+  height:100%;
+  width:100%;
+}
+
 main {
-  font-family: Arial, Helvetica, sans-serif;
+  background-color:white;
+  height: 100%;
   margin: 0 auto;
+  padding: 1rem;
   max-width:50rem;
   width: 80%;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0.5rem 1rem;
+}
+
+header p {
+  margin-left: 225px;
+}
+
+footer {
+  border-top: 1px solid silver;
+  color:black;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom:0;
+  mix-blend-mode: multiply;
+}
+
+footer p {
+  margin:0;
+  text-transform:uppercase;
+}
+
+#irene {
+  border-radius: 50%;
+  float:left;
+  -webkit-filter: blur(2px) grayscale (.5) opacity(0.8) hue-rotate(120deg);
+  filter: blur(2px) grayscale (.5) opacity(0.8) hue-rotate(120deg);
+}
+
+.fab {
+  font-size: 32px;
+}
+
+.fa-facebook {
+  color: #3b5998;
+}
+
+.fa-twitter {
+  color: #55acee;
+}
+
+.fa-linkedin {
+  color: #0077B5;
+}
+
+.clearfix {
+  clear: both;
+  float: none;
 }
