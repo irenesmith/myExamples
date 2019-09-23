@@ -4,24 +4,6 @@ var urlGhibliapi = 'https://ghibliapi.herokuapp.com/films';
 
 var request = new XMLHttpRequest();
 
-/* function getMovies() {
-  request.open('GET', urlGhibliapi, true);
-  request.onload = function () {
-  
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
-  
-    if (request.status >= 200 && request.status < 400) {
-      data.forEach(movie => {
-        console.log(movie.title);
-      });
-    } else {
-      console.log('error');
-    }
-  }  
-}
- */
-
 function getBugs() {
   request.open('GET', bugzillaApi, true);
   request.onload = function () {
