@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Dice Utilities</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.0/cyborg/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg">
+		<a class="navbar-brand" href="#">RPG</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="dice_util.html">Dice</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="char_util.html">Character</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="about.html">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="contact.html">Contact Me</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<main role="main" class="container-fluid">
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<section id="die-roller" class="container">
+			<div class="card bg-transparent text-white">
+			  <img class="card-img" src="img/dice.jpg" alt="Dice image">
+			  <div class="card-img-overlay">
+			    <h1 class="card-title">Let's Roll Some Dice!</h1>
+			    <div class="card-body">
+					<table class="table">
+						<thead>
+							<th>Sides</th>
+							<th>Number</th>
+							<th>Modifier</th>
+							<th>Results</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="narrow-col">
+									<select class="form-control" id="num-sides" name="num-sides">
+										<option>4</option>
+										<option selected>6</option>
+										<option>8</option>
+										<option>10</option>
+										<option>12</option>
+										<option>20</option>
+									</select>
+								</td>
+								<td class="narrow-col">
+									<input class="form-control"
+										type="number"
+										name="num-dice"
+										id="num-dice"
+										min="1"
+										value="1">
+								</td>
+								<td class="narrow-col">
+									<input class="form-control"
+										type="number"
+										name="modifier"
+										id="die-modifier"
+										min="-5"
+										max="10"
+										value="0">
+								</td>
+								<td class="wide-col">
+									<span id="details"></span>
+									<p class="display-1 text-center"><span id="dice-result"></span></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<input type="button" id="btn-roll" name="btn-roll" class="btn btn-lg btn-success" value="Roll">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			  </div>
+			</div>
+
+		</section>
+		<div class="container-fluid">
+		    <footer class="footer bg-light">
+		        <p class="text-muted text-center">
+		        	Copyright &copy; 2018, Irene Smith. All rights reserved.
+		        </p>
+		    </footer>
+		</div>
+	</main>
+
+	<!-- End of content -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script src="scripts/dice.js"></script>
+</body>
+</html>
